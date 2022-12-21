@@ -15,6 +15,7 @@ public class ClientApp {
 		Helper.setPlayers(player1, player2);
 		Game gmGame = new Game(player1, player2);
 		gmGame.getBoard();
+		gmGame.initializePlayers();
 
 	}
 
