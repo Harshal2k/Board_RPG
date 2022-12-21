@@ -9,10 +9,12 @@ import Utils.Helper;
 public class Game {
 	private Player player1, player2;
 	public Board board = new Board();
-
+	private Score score;
+	
 	public Game(Player player1, Player player2) {
 		this.player1 = player1;
 		this.player2 = player2;
+		this.score=new Score(player1,player2);
 	}
 
 	public void getBoard() {
@@ -85,6 +87,7 @@ public class Game {
 					if (Helper.isMoveValid(player.getCharacters()[charPos], player, enemy, posArr[1], posArr[0])) {
 						player.getCharacters()[charPos].setPoY(posArr[0]);
 						player.getCharacters()[charPos].setPosX(posArr[1]);
+						score.calculateDamage(toPlay, posArr[1], posArr[2]);
 						getBoard();
 						if (!winCondition()) {
 							startPlay = false;
