@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import Game.Game;
 import Game.Player;
-import Helper.Helper;
+import Utils.Helper;
 
 public class ClientApp {
 
