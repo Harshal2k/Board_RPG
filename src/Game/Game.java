@@ -16,6 +16,7 @@ public class Game {
 		this.player2 = player2;
 		this.score=new Score(player1,player2);
 	}
+	
 
 	public void getBoard() {
 		board.printBoard(player1, player2);
