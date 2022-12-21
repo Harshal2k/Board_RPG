@@ -182,7 +182,12 @@ public class Helper {
 	}
 
 	public static Boolean isCodeValid(String code) {
-		return true;
+		char gameChar = code.toLowerCase().charAt(0);
+		if (gameChar == 'w' || gameChar == 's' || gameChar == 't') {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
