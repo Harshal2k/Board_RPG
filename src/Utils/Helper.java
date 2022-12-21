@@ -237,6 +237,35 @@ public class Helper {
 				isMoveValid = false;
 			}
 		} else if (character instanceof Witcher) {
+			Integer xDiff = character.getPosX() - posX;
+			Integer yDiff = character.getPoY() - posY;
+			if (xDiff >= -3 && xDiff <= 3 && yDiff >= -3 && yDiff <= 3
+					&& (character.getPosX() == posX || character.getPoY() == posY)) {
+				if (xDiff == -3) {
+					isMoveValid = detectInbetweeners(player, enemy, character.getPosX() + 1, posY)
+							&& detectInbetweeners(player, enemy, character.getPosX() + 2, posY);
+				} else if (xDiff == 3) {
+					isMoveValid = detectInbetweeners(player, enemy, posX + 1, posY)
+							&& detectInbetweeners(player, enemy, posX + 2, posY);
+				} else if (xDiff == -2) {
+					isMoveValid = detectInbetweeners(player, enemy, character.getPosX() + 1, posY);
+				} else if (xDiff == 2) {
+					isMoveValid = detectInbetweeners(player, enemy, posX + 1, posY);
+				} else if (yDiff == -3) {
+					isMoveValid = detectInbetweeners(player, enemy, posX, character.getPoY() + 1)
+							&& detectInbetweeners(player, enemy, posX, character.getPoY() + 2);
+				} else if (yDiff == 3) {
+					isMoveValid = detectInbetweeners(player, enemy, posX, posY + 1)
+							&& detectInbetweeners(player, enemy, posX, posY + 2);
+				} else if (yDiff == -2) {
+					isMoveValid = detectInbetweeners(player, enemy, posX, character.getPoY() + 1);
+				} else if (yDiff == 2) {
+					isMoveValid = detectInbetweeners(player, enemy, posX, posY + 1);
+				}
+			} else {
+				System.out.println("Invalid Move. Witcher can only take three straight steps");
+				isMoveValid = false;
+			}
 		}else if(character instanceof Shadow) {
 		}
 		return isMoveValid;
