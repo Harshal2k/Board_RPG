@@ -2,6 +2,8 @@ package Game;
 
 import java.util.Scanner;
 
+import Character.King;
+import Character.Witcher;
 import Utils.Helper;
 
 public class Game {
@@ -14,9 +16,9 @@ public class Game {
 	}
 
 	public void getBoard() {
-		board.printBoard(player1,player2);
+		board.printBoard(player1, player2);
 	}
-	
+
 	public void initializePlayers() {
 		Boolean player1Initilized = false, player2Initilized = false;
 		while (!player1Initilized && !player2Initilized) {
@@ -39,7 +41,7 @@ public class Game {
 		}
 
 	}
-	
+
 	public void startGame() {
 		Boolean startPlay = true;
 		Integer toPlay = 1;
@@ -84,12 +86,15 @@ public class Game {
 						player.getCharacters()[charPos].setPoY(posArr[0]);
 						player.getCharacters()[charPos].setPosX(posArr[1]);
 						getBoard();
+						if (!winCondition()) {
+							startPlay = false;
+						}
 						if (toPlay == 1) {
 							toPlay = 2;
 						} else {
 							toPlay = 1;
 						}
-					}else {
+					} else {
 						continue;
 					}
 				} else {
@@ -100,5 +105,34 @@ public class Game {
 			}
 		}
 	}
-	
+
+	private Boolean winCondition() {
+		Boolean continueGame = true;
+		Boolean king1Present = false;
+		Boolean king2Present = false;
+		for (int i = 0; i < 4; i++) {
+			if (player1.getCharacters()[i] instanceof King) {
+				king1Present = true;
+			}
+
+			if (player2.getCharacters()[i] instanceof King) {
+				king2Present = true;
+			}
+		}
+		if (king1Present == false && king2Present == false) {
+			System.out.println("It's a Draw!!!");
+			System.out.println("GAME OVER!!!");
+			continueGame = false;
+		} else if (king1Present == true) {
+			System.out.println("Congrats: Player 1 Won");
+			System.out.println("GAME OVER!!!");
+			continueGame = false;
+		} else {
+			System.out.println("Congrats: Player 2 Won");
+			System.out.println("GAME OVER!!!");
+			continueGame = false;
+		}
+
+		return continueGame;
+	}
 }
