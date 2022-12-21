@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Character.GameCharacter;
+import Character.King;
 import Character.Shadow;
 import Character.Tank;
 import Character.Witcher;
@@ -189,5 +190,34 @@ public class Helper {
 			return false;
 		}
 	}
+	
+	public static Boolean isMoveValid(GameCharacter character, Player player, Player enemy, Integer posX,
+			Integer posY) {
+		Boolean isMoveValid = true;
+		if (character.getPosX() == posX && character.getPoY() == posY) {
+			System.out.println("Invalid Move, you are already present on this location");
+			return false;
+		}
+		for (int i = 0; i < 4; i++) {
+			if (player.getCharacters()[i] != null && player.getCharacters()[i].getPosX() == posX
+					&& player.getCharacters()[i].getPoY() == posY) {
+				System.out.println("Invalid Move. One of your character is already present on this position");
+				return false;
+			}
+		}
+
+		if (character instanceof King) {
+			if ((character.getPosX() - posX) < -1 || (character.getPosX() - posX) > 1
+					|| (character.getPoY() - posY) < -1 || (character.getPoY() - posY) > 1) {
+				System.out.println("Invalid Move. King can only move one step");
+				isMoveValid = false;
+			}
+		} else if (character instanceof Tank) {
+		} else if (character instanceof Witcher) {
+		}else if(character instanceof Shadow) {
+		}
+		return isMoveValid;
+	}
+
 
 }
