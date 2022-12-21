@@ -70,7 +70,7 @@ public class Helper {
 					System.out.println("Place your character anywhere in row A & B");
 					System.out.println("Enter character position (Eg: A1): ");
 				} else {
-					System.out.println("Place your character anywhere in row F & G");
+					System.out.println("Place your character anywhere in row E & F");
 					System.out.println("Enter character position (Eg: F1): ");
 				}
 				String position = input.next();
@@ -213,11 +213,49 @@ public class Helper {
 				isMoveValid = false;
 			}
 		} else if (character instanceof Tank) {
+			Integer xDiff = character.getPosX() - posX;
+			Integer yDiff = character.getPoY() - posY;
+			if (xDiff >= -2 && xDiff <= 2 && yDiff >= -2 && yDiff <= 2
+					&& (character.getPosX() == posX || character.getPoY() == posY)) {
+				Integer posArr[] = new Integer[2];// {x,y}
+				if (xDiff == -2) {
+					posArr[0] = character.getPosX() + 1;// Mid position
+					posArr[1] = posY;
+				} else if (xDiff == 2) {
+					posArr[0] = posX + 1;// Mid position
+					posArr[1] = posY;
+				} else if (yDiff == -2) {
+					posArr[1] = character.getPoY() + 1;// Mid position
+					posArr[0] = posX;
+				} else if (yDiff == 2) {
+					posArr[1] = posY + 1;// Mid position
+					posArr[0] = posX;
+				}
+				isMoveValid = detectInbetweeners(player, enemy, posArr[0], posArr[1]);
+			} else {
+				System.out.println("Invalid Move. Tank can only take two straight steps");
+				isMoveValid = false;
+			}
 		} else if (character instanceof Witcher) {
 		}else if(character instanceof Shadow) {
 		}
 		return isMoveValid;
 	}
 
-
+	public static Boolean detectInbetweeners(Player player, Player enemy, Integer posX, Integer posY) {
+		for (int j = 0; j < 4; j++) {
+			if (player.getCharacters()[j] != null && player.getCharacters()[j].getPosX() == posX
+					&& player.getCharacters()[j].getPoY() == posY) {
+				System.out.println("Invalid move, you cannot jump over your own soilders");
+				return false;
+			}
+			if (enemy.getCharacters()[j] != null && enemy.getCharacters()[j].getPosX() == posX
+					&& enemy.getCharacters()[j].getPoY() == posY) {
+				System.out.println("Invalid Move, Enemy encountered in your path, defeat the enemy to move forward");
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
