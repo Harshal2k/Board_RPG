@@ -10,6 +10,6 @@ public class Game {
 	}
 
 	public void getBoard() {
-		board.printBoard();
+		board.printBoard(player1,player2);
 	}
 }
