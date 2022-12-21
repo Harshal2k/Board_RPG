@@ -39,7 +39,7 @@ public class Player {
 		this.characters = characters;
 	}
 	
-	
+	//
 	public void updateCharacter(GameCharacter character, Integer position) {
 		if (position > 0 && position < 4) {
 			characters[position]=character;

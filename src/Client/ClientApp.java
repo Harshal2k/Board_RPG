@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import Game.Game;
 import Game.Player;
+import Game.Score;
 import Utils.Helper;
 
 public class ClientApp {
@@ -13,7 +14,10 @@ public class ClientApp {
 		Player player1=new Player(1);
 		Player player2=new Player(2);
 		Helper.setPlayers(player1, player2);
+		
 		Game gmGame = new Game(player1, player2);
+		Score scoreCal = new Score(player1, player2);
+		Score.getPlayerInfo();
 		gmGame.getBoard();
 		gmGame.initializePlayers();
 		gmGame.startGame();
