@@ -2,6 +2,8 @@ package Utils;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Character.GameCharacter;
 import Character.Shadow;
@@ -10,7 +12,7 @@ import Character.Witcher;
 import Game.Player;
 
 public class Helper {
-	
+
 	public static void setPlayers(Player p1, Player p2) throws IOException {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter Player 1 name: ");
@@ -41,12 +43,12 @@ public class Helper {
 			} else {
 				p1.setHouse(houses[p1Op - 1]);
 				p2.setHouse(houses[p2Op - 1]);
-				p1.getCharacters()[0].setName(houses[p1Op-1].charAt(0)+"K");
-				p2.getCharacters()[0].setName(houses[p2Op-1].charAt(0)+"K");
+				p1.getCharacters()[0].setName(houses[p1Op - 1].charAt(0) + "K");
+				p2.getCharacters()[0].setName(houses[p2Op - 1].charAt(0) + "K");
 			}
 		}
 	}
-	
+
 	@SuppressWarnings("resource")
 	public static GameCharacter setCharacter(Player player, Integer chNo, Integer PlNo) {
 		Boolean isCharacterValid = false;
@@ -147,7 +149,6 @@ public class Helper {
 		}
 		return gmCharacter;
 	}
-	
 
 	public static Integer[] translatePosition(String position) {
 		Integer arr[] = new Integer[2];
@@ -170,7 +171,14 @@ public class Helper {
 	}
 
 	public static Boolean isPositionValid(String position) {
-		return true;
+		Pattern pattern = Pattern.compile("^[A-F][1-6]$", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(position);
+		boolean matchFound = matcher.find();
+		if (position.length() != 2 || !matchFound) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public static Boolean isCodeValid(String code) {
