@@ -151,7 +151,21 @@ public class Helper {
 
 	public static Integer[] translatePosition(String position) {
 		Integer arr[] = new Integer[2];
-
+		char posChar = position.toLowerCase().charAt(0);
+		if (posChar == 'a') {
+			arr[0] = 0;
+		} else if (posChar == 'b') {
+			arr[0] = 1;
+		} else if (posChar == 'c') {
+			arr[0] = 2;
+		} else if (posChar == 'd') {
+			arr[0] = 3;
+		} else if (posChar == 'e') {
+			arr[0] = 4;
+		} else if (posChar == 'f') {
+			arr[0] = 5;
+		}
+		arr[1] = Integer.parseInt(String.valueOf(position.charAt(1))) - 1;
 		return arr;
 	}
 
