@@ -24,7 +24,7 @@ public class Helper {
 		String houses[] = { "Stark     ", "Targaryen ", "Lannister ", "Greyjoy   ", "Baratheon ", "Martell   ", "Arryn     " };
 		while (p1.getHouse() == "" && p2.getHouse() == "") {
 			for (int i = 1; i < 8; i++) {
-				System.out.println(Colours.BLACK_BG+" "+i + ". "+(i%2==0?Colours.CYAN_BG:Colours.WHITE_BG)+Colours.BLACK_TXT+" House of " + houses[i - 1]+Colours.ANSI_RESET);
+				System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+" "+i + ". "+(i%2==0?Colours.CYAN_BG:Colours.WHITE_BG)+Colours.BLACK_TXT+" House of " + houses[i - 1]+Colours.ANSI_RESET);
 			}
 			Scanner houseInput = new Scanner(System.in);
 			Integer p1Op, p2Op;
@@ -57,13 +57,13 @@ public class Helper {
 		GameCharacter gmCharacter = null;
 		while (!isCharacterValid) {
 			Scanner input = new Scanner(System.in);
-			System.out.println(Colours.BLACK_BG+"\n---------------------------------------------------------------------");
+			System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+"\n---------------------------------------------------------------------");
 			System.out.println("| SR.NO |    CHARACTER   | CODE | HEALTH | ATTACK | DEFENCE | MOVES |");
 			System.out.println("|-------------------------------------------------------------------|"+Colours.ANSI_RESET);
 			System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT+"|   1   |     Witcher    |   W  |   80   |   100  |    45   |   3   |"+Colours.ANSI_RESET);
 			System.out.println(Colours.CYAN_BG+Colours.BLACK_TXT+"|   2   | Shadow Monster |   S  |   75   |   90   |    30   |   4   |"+Colours.ANSI_RESET);
 			System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT+"|   3   |      Tank      |   T  |   100  |   50   |   100   |   2   |"+Colours.ANSI_RESET);
-			System.out.println(Colours.BLACK_BG+"---------------------------------------------------------------------"+Colours.ANSI_RESET);
+			System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+"---------------------------------------------------------------------"+Colours.ANSI_RESET);
 			System.out.println(Colours.USR_INPUT+"\n Enter Character " + chNo + " code: "+Colours.ANSI_RESET);
 			String chName = input.next();
 			if (isCodeValid(chName)) {

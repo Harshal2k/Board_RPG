@@ -4,9 +4,6 @@ import Character.GameCharacter;
 import Utils.Colours;
 
 public class Board {
-	public Board() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	public void printBoard(Player p1,Player p2) {
 		int a=65;
