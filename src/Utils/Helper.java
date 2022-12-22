@@ -271,7 +271,7 @@ public class Helper {
 			Integer yDiff = character.getPoY() - posY;
 			Integer posxDiff=xDiff<0?(-1)*xDiff:xDiff;
 			Integer posyDiff=yDiff<0?(-1)*yDiff:yDiff;
-			if(xDiff>=-4 && xDiff<=4 && yDiff>=-4 && yDiff<=-4 && (character.getPosX() == posX || character.getPoY() == posY||posxDiff==posyDiff)) {
+			if(xDiff>=-4 && xDiff<=4 && yDiff>=-4 && yDiff<=4 && (character.getPosX() == posX || character.getPoY() == posY||posxDiff==posyDiff)) {
 				isMoveValid=true;
 			}else {
 				System.out.println("Invalid Move. Shadow Monster can only take four steps diagonally or straight");

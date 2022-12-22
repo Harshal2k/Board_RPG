@@ -10,13 +10,12 @@ public class Game {
 	private Player player1, player2;
 	public Board board = new Board();
 	private Score score;
-	
+
 	public Game(Player player1, Player player2) {
 		this.player1 = player1;
 		this.player2 = player2;
-		this.score=new Score(player1,player2);
+		this.score = new Score(player1, player2);
 	}
-	
 
 	public void getBoard() {
 		board.printBoard(player1, player2);
@@ -26,19 +25,19 @@ public class Game {
 		Boolean player1Initilized = false, player2Initilized = false;
 		while (!player1Initilized && !player2Initilized) {
 			System.out.println("Player 01 Choose your characters:");
-			player1.updateCharacter(Helper.setCharacter(player1, 1, 1), 1);
+			player1.updateCharacter(Helper.setCharacter(player1, 1, 1), 1,false	);
 			getBoard();
-			player1.updateCharacter(Helper.setCharacter(player1, 2, 1), 2);
+			player1.updateCharacter(Helper.setCharacter(player1, 2, 1), 2,false);
 			getBoard();
-			player1.updateCharacter(Helper.setCharacter(player1, 3, 1), 3);
+			player1.updateCharacter(Helper.setCharacter(player1, 3, 1), 3,false);
 			getBoard();
 			player1Initilized = true;
 			System.out.println("Player 02 Choose your characters:");
-			player2.updateCharacter(Helper.setCharacter(player2, 1, 2), 1);
+			player2.updateCharacter(Helper.setCharacter(player2, 1, 2), 1,false);
 			getBoard();
-			player2.updateCharacter(Helper.setCharacter(player2, 2, 2), 2);
+			player2.updateCharacter(Helper.setCharacter(player2, 2, 2), 2,false);
 			getBoard();
-			player2.updateCharacter(Helper.setCharacter(player2, 3, 2), 3);
+			player2.updateCharacter(Helper.setCharacter(player2, 3, 2), 3,false);
 			getBoard();
 			player2Initilized = true;
 		}
@@ -71,7 +70,8 @@ public class Game {
 			}
 			// -------------------------------------------------------
 			for (int i = 0; i < 4; i++) {
-				if (player.getCharacters()[i].getName().toLowerCase().contentEquals(character.toLowerCase())) {
+				if (player.getCharacters()[i] != null
+						&& player.getCharacters()[i].getName().toLowerCase().contentEquals(character.toLowerCase())) {
 					validCharacter = true;
 					charPos = i;
 					break;
@@ -88,8 +88,9 @@ public class Game {
 					if (Helper.isMoveValid(player.getCharacters()[charPos], player, enemy, posArr[1], posArr[0])) {
 						player.getCharacters()[charPos].setPoY(posArr[0]);
 						player.getCharacters()[charPos].setPosX(posArr[1]);
-						score.calculateDamage(toPlay, posArr[1], posArr[2]);
+						score.calculateDamage(toPlay, posArr[1], posArr[0]);
 						getBoard();
+						score.printScores();
 						if (!winCondition()) {
 							startPlay = false;
 						}
@@ -127,11 +128,11 @@ public class Game {
 			System.out.println("It's a Draw!!!");
 			System.out.println("GAME OVER!!!");
 			continueGame = false;
-		} else if (king1Present == true) {
+		} else if (king2Present == false) {
 			System.out.println("Congrats: Player 1 Won");
 			System.out.println("GAME OVER!!!");
 			continueGame = false;
-		} else {
+		} else if (king1Present == false) {
 			System.out.println("Congrats: Player 2 Won");
 			System.out.println("GAME OVER!!!");
 			continueGame = false;

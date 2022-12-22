@@ -11,7 +11,7 @@ public class Player {
 		if (playerNo == 1) {
 			characters[0] = new King("P1K", 150, 2, 0);
 		} else if (playerNo == 2) {
-			characters[0] = new King("P2K", 150,2,5);
+			characters[0] = new King("P2K", 150, 2, 5);
 		}
 	}
 
@@ -38,11 +38,12 @@ public class Player {
 	public void setCharacters(GameCharacter[] characters) {
 		this.characters = characters;
 	}
-	
-	
-	public void updateCharacter(GameCharacter character, Integer position) {
-		if (position > 0 && position < 4) {
-			characters[position]=character;
+
+	public void updateCharacter(GameCharacter character, Integer position, Boolean delKing) {
+		if (delKing && position >= 0 && position < 4) {
+			characters[position] = character;
+		} else if (!delKing && position > 0 && position < 4) {
+			characters[position] = character;
 		}
 	}
 }
