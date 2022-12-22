@@ -298,4 +298,34 @@ public class Helper {
 		return true;
 	}
 	
+	public static void printRules() {
+		System.out.println(Colours.BLACK_BG + Colours.WHITE_TXT
+				+ "\n                                                                RULES                                                                                 "
+				+ Colours.ANSI_RESET);
+		System.out.println(Colours.CYAN_BG + Colours.BLACK_TXT
+				+ "1. Aim of the game is to defeat the enemy by killing the enemies king                                                                                 ");
+		System.out.println(
+				"2. Each Player will have a King by default                                                                                                            ");
+		System.out.println(
+				"3. Each player will have 4 Characters including king                                                                                                  ");
+		System.out.println(
+				"4. You can choose rest of the 3 charactes based on your liking                                                                                        ");
+		System.out.println(
+				"5. There are three characters, you can choose from namely Witcher, Shadow Monster and Tank                                                            ");
+		System.out.println(
+				"6. Witcher can move only in straight line (up, down, left, right), but can only take 3 steps (squares) at a time and it cannot cross other characters ");
+		System.out.println(
+				"7. Tank can move only in straight line (up, down, left, right), but can only take 2 steps (squares) at a time and it cannot cross other characters    ");
+		System.out.println(
+				"8. Shadow Monster can move in straight line or diagonally, it can take only 4 steps (Squares) at a time and it can cross other characters             ");
+		System.out.println(
+				"9. King can move in any direction but can take only one step (square) at a time                                                                       ");
+		System.out.println(
+				"10. No character of same house (player or team) can be on the same position at a time                                                                 ");
+		System.out.println(
+				"11. If a player attacks the enemy his attack will be increased by 10 only for first attack                                                            "
+						+ Colours.ANSI_RESET);
+
+	}	
+	
 }

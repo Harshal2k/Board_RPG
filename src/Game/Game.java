@@ -126,16 +126,16 @@ public class Game {
 			}
 		}
 		if (king1Present == false && king2Present == false) {
-			System.out.println("It's a Draw!!!");
-			System.out.println("GAME OVER!!!");
+			System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT+"\n It's a Draw!!! "+Colours.ANSI_RESET);
+			System.out.println(Colours.ERROR+" GAME OVER!!! "+Colours.ANSI_RESET);
 			continueGame = false;
 		} else if (king2Present == false) {
-			System.out.println("Congrats: Player 1 Won");
-			System.out.println("GAME OVER!!!");
+			System.out.println(Colours.GREEN_BG+Colours.WHITE_TXT+"\n Congrats: "+player1.getName()+" Of House "+player1.getHouse()+" Won the Battle "+Colours.ANSI_RESET);
+			System.out.println(Colours.ERROR+" GAME OVER!!! "+Colours.ANSI_RESET);
 			continueGame = false;
 		} else if (king1Present == false) {
-			System.out.println("Congrats: Player 2 Won");
-			System.out.println("GAME OVER!!!");
+			System.out.println(Colours.GREEN_BG+Colours.WHITE_TXT+"\n Congrats: "+player2.getName()+" Of House "+player2.getHouse()+" Won the Battle "+Colours.ANSI_RESET);
+			System.out.println(Colours.ERROR+" GAME OVER!!! "+Colours.ANSI_RESET);
 			continueGame = false;
 		}
 

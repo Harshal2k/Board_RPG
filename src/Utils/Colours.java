@@ -9,6 +9,7 @@ public class Colours {
     public static final String BLACK_BG = "\u001b[40;1m";
     public static final String YELLOW_BG = "\u001b[43;1m";
     public static final String MAGENTA_BG = "\u001b[45;1m";
+    public static final String BLUE_BG = "\u001b[44;1m";
     public static final String BLACK_TXT = "\u001b[30;1m";
     public static final String WHITE_TXT = "\u001b[37;1m";
     public static final String USR_INPUT = "\u001b[43;1m\u001b[30;1m";
