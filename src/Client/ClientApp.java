@@ -7,7 +7,7 @@ import Game.Player;
 import Utils.Helper;
 
 public class ClientApp {
-
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		Player player1=new Player(1);

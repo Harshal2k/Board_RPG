@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 import Character.King;
 import Character.Witcher;
+import Utils.Colours;
 import Utils.Helper;
 
 public class Game {
 	private Player player1, player2;
-	public Board board = new Board();
+	private Board board = new Board();
 	private Score score;
 
 	public Game(Player player1, Player player2) {
@@ -24,7 +25,7 @@ public class Game {
 	public void initializePlayers() {
 		Boolean player1Initilized = false, player2Initilized = false;
 		while (!player1Initilized && !player2Initilized) {
-			System.out.println("Player 01 Choose your characters:");
+			System.out.println(Colours.USR_INPUT+"\n Player 01 Choose your characters: "+Colours.ANSI_RESET);
 			player1.updateCharacter(Helper.setCharacter(player1, 1, 1), 1,false	);
 			getBoard();
 			player1.updateCharacter(Helper.setCharacter(player1, 2, 1), 2,false);
@@ -32,7 +33,7 @@ public class Game {
 			player1.updateCharacter(Helper.setCharacter(player1, 3, 1), 3,false);
 			getBoard();
 			player1Initilized = true;
-			System.out.println("Player 02 Choose your characters:");
+			System.out.println(Colours.USR_INPUT+"\n Player 02 Choose your characters: "+Colours.ANSI_RESET);
 			player2.updateCharacter(Helper.setCharacter(player2, 1, 2), 1,false);
 			getBoard();
 			player2.updateCharacter(Helper.setCharacter(player2, 2, 2), 2,false);
@@ -60,8 +61,8 @@ public class Game {
 				player = player2;
 				enemy = player1;
 			}
-			System.out.println(String.format("Player %d Make your move: ", toPlay));
-			System.out.println("Select your character: ");
+			System.out.println(Colours.USR_INPUT+String.format("\n Player %d Make your move: ", toPlay)+Colours.ANSI_RESET);
+			System.out.println(Colours.USR_INPUT+" Select your character: "+Colours.ANSI_RESET);
 			character = input.next();
 			// -----------TEMP REMOVE AFTERWARDS0---------------------
 			if (character.contentEquals("stop")) {
@@ -78,10 +79,10 @@ public class Game {
 				}
 			}
 			if (validCharacter == false) {
-				System.out.println("Inputed character does not exist");
+				System.out.println(Colours.ERROR+"\n Inputed character does not exist "+Colours.ANSI_RESET);
 				continue;
 			} else {
-				System.out.println("Enter position:");
+				System.out.println(Colours.USR_INPUT+"\n Enter position to move to: "+Colours.ANSI_RESET);
 				position = input.next();
 				if (Helper.isPositionValid(position)) {
 					Integer posArr[] = Helper.translatePosition(position);
@@ -103,7 +104,7 @@ public class Game {
 						continue;
 					}
 				} else {
-					System.out.println("Invalid Position");
+					System.out.println(Colours.ERROR+"\n Invalid Position "+Colours.ANSI_RESET);
 					continue;
 				}
 

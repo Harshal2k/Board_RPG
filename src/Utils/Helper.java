@@ -16,34 +16,35 @@ public class Helper {
 
 	public static void setPlayers(Player p1, Player p2) throws IOException {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter Player 1 name: ");
+		System.out.println(Colours.USR_INPUT+"\n Enter Player 1 name: "+Colours.ANSI_RESET);
 		p1.setName(input.next());
-		System.out.println("Enter Player 2 name: ");
+		System.out.println(Colours.USR_INPUT+"\n Enter Player 2 name: "+Colours.ANSI_RESET);
 		p2.setName(input.next());
-		String houses[] = { "Stark", "Targaryen", "Lannister", "Greyjoy", "Baratheon", "Martell", "Arryn" };
+		System.out.println("");
+		String houses[] = { "Stark     ", "Targaryen ", "Lannister ", "Greyjoy   ", "Baratheon ", "Martell   ", "Arryn     " };
 		while (p1.getHouse() == "" && p2.getHouse() == "") {
 			for (int i = 1; i < 8; i++) {
-				System.out.println(i + ". House of " + houses[i - 1]);
+				System.out.println(Colours.BLACK_BG+" "+i + ". "+(i%2==0?Colours.CYAN_BG:Colours.WHITE_BG)+Colours.BLACK_TXT+" House of " + houses[i - 1]+Colours.ANSI_RESET);
 			}
 			Scanner houseInput = new Scanner(System.in);
 			Integer p1Op, p2Op;
 			try {
-				System.out.println("Player 1 choose your house no: ");
+				System.out.println(Colours.USR_INPUT+"\n Player 1 choose your house no: "+Colours.ANSI_RESET);
 				p1Op = houseInput.nextInt();
-				System.out.println("Player 2 choose your house no: ");
+				System.out.println(Colours.USR_INPUT+"\n Player 2 choose your house no: "+Colours.ANSI_RESET);
 				p2Op = houseInput.nextInt();
 			} catch (Exception e) {
 				Runtime.getRuntime().exec("clear");
-				System.out.println("Invalid option, try again");
+				System.out.println(Colours.ERROR+" Invalid option, try again \n"+Colours.ANSI_RESET);
 				continue;
 			}
 			if (p1Op == p2Op) {
-				System.out.println("Both players cannot choose same house");
-			} else if ((p1Op < 1 && p1Op > 7) || (p2Op < 1 && p2Op > 7)) {
-				System.out.println("Invalid option, try again");
+				System.out.println(Colours.ERROR+" Both players cannot choose same house \n"+Colours.ANSI_RESET);
+			} else if ((p1Op < 1 || p1Op > 7) || (p2Op < 1 || p2Op > 7)) {
+				System.out.println(Colours.ERROR+" Invalid option, try again \n"+Colours.ANSI_RESET);
 			} else {
-				p1.setHouse(houses[p1Op - 1]);
-				p2.setHouse(houses[p2Op - 1]);
+				p1.setHouse(houses[p1Op - 1].replaceAll(" ", ""));
+				p2.setHouse(houses[p2Op - 1].replaceAll(" ", ""));
 				p1.getCharacters()[0].setName(houses[p1Op - 1].charAt(0) + "K");
 				p2.getCharacters()[0].setName(houses[p2Op - 1].charAt(0) + "K");
 			}
@@ -56,22 +57,22 @@ public class Helper {
 		GameCharacter gmCharacter = null;
 		while (!isCharacterValid) {
 			Scanner input = new Scanner(System.in);
-			System.out.println("---------------------------------------------------------------------");
+			System.out.println(Colours.BLACK_BG+"\n---------------------------------------------------------------------");
 			System.out.println("| SR.NO |    CHARACTER   | CODE | HEALTH | ATTACK | DEFENCE | MOVES |");
-			System.out.println("|-------------------------------------------------------------------|");
-			System.out.println("|   1   |     Witcher    |   W  |   70   |   100  |    45   |   3   |");
-			System.out.println("|   2   | Shadow Monster |   S  |   70   |   90   |    30   |   4   |");
-			System.out.println("|   3   |      Tank      |   T  |   70   |   50   |   100   |   2   |");
-			System.out.println("---------------------------------------------------------------------");
-			System.out.println("Enter Character " + chNo + " code: ");
+			System.out.println("|-------------------------------------------------------------------|"+Colours.ANSI_RESET);
+			System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT+"|   1   |     Witcher    |   W  |   80   |   100  |    45   |   3   |"+Colours.ANSI_RESET);
+			System.out.println(Colours.CYAN_BG+Colours.BLACK_TXT+"|   2   | Shadow Monster |   S  |   75   |   90   |    30   |   4   |"+Colours.ANSI_RESET);
+			System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT+"|   3   |      Tank      |   T  |   100  |   50   |   100   |   2   |"+Colours.ANSI_RESET);
+			System.out.println(Colours.BLACK_BG+"---------------------------------------------------------------------"+Colours.ANSI_RESET);
+			System.out.println(Colours.USR_INPUT+"\n Enter Character " + chNo + " code: "+Colours.ANSI_RESET);
 			String chName = input.next();
 			if (isCodeValid(chName)) {
 				if (PlNo == 1) {
-					System.out.println("Place your character anywhere in row A & B");
-					System.out.println("Enter character position (Eg: A1): ");
+					System.out.println(Colours.USR_INPUT+"\n Place your character anywhere in row A & B "+Colours.ANSI_RESET);
+					System.out.println(Colours.USR_INPUT+" Enter character position (Eg: A1): "+Colours.ANSI_RESET);
 				} else {
-					System.out.println("Place your character anywhere in row E & F");
-					System.out.println("Enter character position (Eg: F1): ");
+					System.out.println(Colours.USR_INPUT+"\n Place your character anywhere in row E & F"+Colours.ANSI_RESET);
+					System.out.println(Colours.USR_INPUT+" Enter character position (Eg: F1): "+Colours.ANSI_RESET);
 				}
 				String position = input.next();
 				Boolean isCorrectRow = PlNo == 1
@@ -93,7 +94,7 @@ public class Helper {
 							}
 						}
 						if (charPresent == true) {
-							System.out.println("Character Already present at position: " + position);
+							System.out.println(Colours.ERROR+"\n Character Already present at position: " + position+Colours.ANSI_RESET);
 							continue;
 						}
 						gmCharacter = new Tank(player.getHouse().charAt(0) + "T" + count, 100, posArr[1], posArr[0]);
@@ -112,7 +113,7 @@ public class Helper {
 							}
 						}
 						if (charPresent == true) {
-							System.out.println("Character Already present at position: " + position);
+							System.out.println(Colours.ERROR+"\n Character Already present at position: " + position+Colours.ANSI_RESET);
 							continue;
 						}
 						gmCharacter = new Witcher(player.getHouse().charAt(0) + "W" + count, 80, posArr[1], posArr[0]);
@@ -132,7 +133,7 @@ public class Helper {
 							}
 						}
 						if (charPresent == true) {
-							System.out.println("Character Already present at position: " + position);
+							System.out.println(Colours.ERROR+"\n Character Already present at position: " + position+Colours.ANSI_RESET);
 							continue;
 						}
 						gmCharacter = new Shadow(player.getHouse().charAt(0) + "S" + count, 75, posArr[1], posArr[0]);
@@ -140,11 +141,11 @@ public class Helper {
 					}
 
 				} else {
-					System.out.println("Invalid Position!");
+					System.out.println(Colours.ERROR+"\n Invalid Position! "+Colours.ANSI_RESET);
 					continue;
 				}
 			} else {
-				System.out.println("Invalid character code!");
+				System.out.println(Colours.ERROR+"\n Invalid character code! "+Colours.ANSI_RESET);
 				continue;
 			}
 		}
@@ -195,13 +196,13 @@ public class Helper {
 			Integer posY) {
 		Boolean isMoveValid = true;
 		if (character.getPosX() == posX && character.getPoY() == posY) {
-			System.out.println("Invalid Move, you are already present on this location");
+			System.out.println(Colours.ERROR+"\n Invalid Move, you are already present on this location "+Colours.ANSI_RESET);
 			return false;
 		}
 		for (int i = 0; i < 4; i++) {
 			if (player.getCharacters()[i] != null && player.getCharacters()[i].getPosX() == posX
 					&& player.getCharacters()[i].getPoY() == posY) {
-				System.out.println("Invalid Move. One of your character is already present on this position");
+				System.out.println(Colours.ERROR+"\n Invalid Move. One of your character is already present on this position "+Colours.ANSI_RESET);
 				return false;
 			}
 		}
@@ -209,7 +210,7 @@ public class Helper {
 		if (character instanceof King) {
 			if ((character.getPosX() - posX) < -1 || (character.getPosX() - posX) > 1
 					|| (character.getPoY() - posY) < -1 || (character.getPoY() - posY) > 1) {
-				System.out.println("Invalid Move. King can only move one step");
+				System.out.println(Colours.ERROR+"\n Invalid Move. King can only move one step "+Colours.ANSI_RESET);
 				isMoveValid = false;
 			}
 		} else if (character instanceof Tank) {
@@ -233,7 +234,7 @@ public class Helper {
 				}
 				isMoveValid = detectInbetweeners(player, enemy, posArr[0], posArr[1]);
 			} else {
-				System.out.println("Invalid Move. Tank can only take two straight steps");
+				System.out.println(Colours.ERROR+"\n Invalid Move. Tank can only take two straight steps "+Colours.ANSI_RESET);
 				isMoveValid = false;
 			}
 		} else if (character instanceof Witcher) {
@@ -263,7 +264,7 @@ public class Helper {
 					isMoveValid = detectInbetweeners(player, enemy, posX, posY + 1);
 				}
 			} else {
-				System.out.println("Invalid Move. Witcher can only take three straight steps");
+				System.out.println(Colours.ERROR+"\n Invalid Move. Witcher can only take three straight steps "+Colours.ANSI_RESET);
 				isMoveValid = false;
 			}
 		}else if(character instanceof Shadow) {
@@ -274,7 +275,7 @@ public class Helper {
 			if(xDiff>=-4 && xDiff<=4 && yDiff>=-4 && yDiff<=4 && (character.getPosX() == posX || character.getPoY() == posY||posxDiff==posyDiff)) {
 				isMoveValid=true;
 			}else {
-				System.out.println("Invalid Move. Shadow Monster can only take four steps diagonally or straight");
+				System.out.println(Colours.ERROR+"\n Invalid Move. Shadow Monster can only take four steps diagonally or straight "+Colours.ANSI_RESET);
 				isMoveValid = false;
 			}
 		}
@@ -285,12 +286,12 @@ public class Helper {
 		for (int j = 0; j < 4; j++) {
 			if (player.getCharacters()[j] != null && player.getCharacters()[j].getPosX() == posX
 					&& player.getCharacters()[j].getPoY() == posY) {
-				System.out.println("Invalid move, you cannot jump over your own soilders");
+				System.out.println(Colours.ERROR+"\n Invalid move, you cannot jump over your own soilders "+Colours.ANSI_RESET);
 				return false;
 			}
 			if (enemy.getCharacters()[j] != null && enemy.getCharacters()[j].getPosX() == posX
 					&& enemy.getCharacters()[j].getPoY() == posY) {
-				System.out.println("Invalid Move, Enemy encountered in your path, defeat the enemy to move forward");
+				System.out.println(Colours.ERROR+"\n Invalid Move, Enemy encountered in your path, defeat the enemy to move forward "+Colours.ANSI_RESET);
 				return false;
 			}
 		}
