@@ -117,7 +117,7 @@ public class Score {
 			}
 		}
 		System.out.println("---------------------------------------------------------------------");
-		System.out.println("Player 01");
+		System.out.println("Player 02");
 		System.out.println("---------------------------------------------------------------------");
 		System.out.println("|    CHARACTER   | HEALTH  |  ATTACK | DEFENCE | MOVES |");
 		System.out.println("|-------------------------------------------------------------------|");
