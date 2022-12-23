@@ -16,10 +16,10 @@ public class ClientApp {
 		Helper.setPlayers(player1, player2);
 		
 		Game gmGame = new Game(player1, player2);
-		Score scoreCal = new Score(player1, player2);
-		Score.getPlayerInfo();
 		gmGame.getBoard();
 		gmGame.initializePlayers();
+		Score scoreCal = new Score(player1, player2);
+		Score.getPlayerInfo();
 		gmGame.startGame();
 	}
 
