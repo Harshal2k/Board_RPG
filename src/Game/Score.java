@@ -105,30 +105,19 @@ public class Score {
 	}
 
 	public void printScores() {
-		System.out.println("Player 01");
-		System.out.println("---------------------------------------------------------------------");
-		System.out.println("| CHARACTER  | HEALTH  |  ATTACK | DEFENCE | MOVES |");
-		System.out.println("|-------------------------------------------------------------------|");
-		for (int i = 0; i < 4; i++) {
-			if (player1.getCharacters()[i] != null) {
-				System.out.println(String.format("|     %3s    |   %3s   |   %3s   |   %3s   |   %1s   |",
-						player1.getCharacters()[i].getName(), player1.getCharacters()[i].getHealth(),
-						player1.getCharacters()[i].getAttack(), player1.getCharacters()[i].getDefence(), 2));
+		System.out.println(String.format("--------------------------------------------------------------------------------------------------------------"));
+		System.out.print(String.format("|                      %-31s|", player1.getName())); System.out.println(String.format("|                      %-31s|", player2.getName()));
+		System.out.println(String.format("|-----------------------------------------------------||-----------------------------------------------------|"));
+		System.out.println(String.format("|  CHARACTER  |  HEALTH | ATTACK  | DEFENCE  |  MOVES ||  CHARACTER  |  HEALTH |  ATTACK |  DEFENCE |  MOVES |"));
+		System.out.println(String.format("|-----------------------------------------------------||-----------------------------------------------------|"));
+		for (GameCharacter val1 : player1.getCharacters() ) {
+			for(GameCharacter val2 : player2.getCharacters()) {
+				System.out.println(String.format("|     %3s     |   %3d   |   %3d   |    %3d   |   %3d  ||     %3s     |   %3d   |   %3d   |    %3d   |   %3d  |", val1.getName(), val1.getHealth(), val1.getAttack(), val1.getDefence(), val1.getMaxMoves(), val2.getName(), val2.getHealth(), val2.getAttack(), val2.getDefence(), val2.getMaxMoves()));
+				break;
 			}
 		}
-		System.out.println("---------------------------------------------------------------------");
-		System.out.println("Player 02");
-		System.out.println("---------------------------------------------------------------------");
-		System.out.println("|    CHARACTER   | HEALTH  |  ATTACK | DEFENCE | MOVES |");
-		System.out.println("|-------------------------------------------------------------------|");
-		for (int i = 0; i < 4; i++) {
-			if (player2.getCharacters()[i] != null) {
-				System.out.println(String.format("|     %3s    |   %3s   |   %3s   |   %3s   |   %1s   |",
-						player2.getCharacters()[i].getName(), player2.getCharacters()[i].getHealth(),
-						player2.getCharacters()[i].getAttack(), player2.getCharacters()[i].getDefence(), 2));
-			}
-		}
-		System.out.println("---------------------------------------------------------------------");
+		
+		System.out.println(String.format("--------------------------------------------------------------------------------------------------------------"));
 	}
 
 }
