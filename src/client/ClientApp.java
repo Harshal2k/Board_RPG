@@ -11,12 +11,15 @@ public class ClientApp {
 	
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println(Colours.BLACK_BG + Colours.WHITE_TXT + " ======    ======    ========  ");
-		System.out.println(" ||    ||  ||    ||  ||        ");
-		System.out.println(" ||    //  ||    //  ||        ");
-		System.out.println(" ||====    ||====    ||   ==|| ");
-		System.out.println(" ||  \\\\    ||        ||     || ");
-		System.out.println(" ||   \\\\   ||        ========  " + Colours.ANSI_RESET);
+		System.out.println("\n"+Colours.BLACK_BG+"                                                       \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ " ______                     _  ____________ _____  "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ " | ___ \\                   | | | ___ \\ ___ \\  __ \\ "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ " | |_/ / ___   __ _ _ __ __| | | |_/ / |_/ / |  \\/ "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ " | ___ \\/ _ \\ / _` | '__/ _` | |    /|  __/| | __  "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ " | |_/ / (_) | (_| | | | (_| | | |\\ \\| |   | |_\\ \\ "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ " \\____/ \\___/ \\__,_|_|  \\__,_| \\_| \\_\\_|    \\____/ "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+Colours.BLACK_BG+"  "+Colours.YELLOW_BG+Colours.BLACK_TXT+ "                                                   "+Colours.BLACK_BG+"  \n"+Colours.ANSI_RESET
+				+ Colours.BLACK_BG+"                                                       \n"+Colours.ANSI_RESET);
 
 		Helper.printRules();
 		

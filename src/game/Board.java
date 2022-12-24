@@ -8,7 +8,7 @@ public class Board {
 	public void printBoard(Player p1,Player p2) {
 		int a=65;
 		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+"   -------------------------------------   "+Colours.ANSI_RESET);
-		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+String.format("             HOUSE OF %-9s            ", p1.getHouse().toUpperCase())+Colours.ANSI_RESET);
+		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+String.format("            🏰 HOUSE OF %-9s          ", p1.getHouse().toUpperCase())+Colours.ANSI_RESET);
 		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+"   -------------------------------------   "+Colours.ANSI_RESET);
 		for(int i=0;i<7;i++) {
 			if(i==0) {
@@ -43,7 +43,7 @@ public class Board {
 		}
 		System.out.println("");
 		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+"   -------------------------------------   "+Colours.ANSI_RESET);
-		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+String.format("             HOUSE OF %-9s            ", p2.getHouse().toUpperCase())+Colours.ANSI_RESET);
+		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+String.format("           🏰 HOUSE OF %-9s           ", p2.getHouse().toUpperCase())+Colours.ANSI_RESET);
 		System.out.println(Colours.BLACK_BG+Colours.WHITE_TXT+"   -------------------------------------   "+Colours.ANSI_RESET);
 	}
 }

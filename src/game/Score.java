@@ -68,8 +68,10 @@ public class Score {
 
 		if (attackerHealth <= 0) {
 			if (toattack == 1) {
+				System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT + "\n ⚰️ " + player1.getCharacters()[attacker_pos].getName()+ " of House " + player1.getHouse() + " got Killed \n" + Colours.ANSI_RESET);
 				player1.updateCharacter(null, attacker_pos, true);
 			} else {
+				System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT + "\n ⚰️ " + player2.getCharacters()[attacker_pos].getName()+ " of House " + player2.getHouse() + " got Killed \n" + Colours.ANSI_RESET);
 				player2.updateCharacter(null, attacker_pos, true);
 			}
 		} else {
@@ -87,8 +89,10 @@ public class Score {
 
 		if (defencerHealth <= 0) {
 			if (toattack == 2) {
+				System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT + "\n ⚰️ " + player1.getCharacters()[defencer_pos].getName()+ " of House " + player1.getHouse() + " got Killed \n" + Colours.ANSI_RESET);
 				player1.updateCharacter(null, defencer_pos, true);
 			} else {
+				System.out.println(Colours.WHITE_BG+Colours.BLACK_TXT + "\n ⚰️ " + player2.getCharacters()[defencer_pos].getName()+ " of House " + player2.getHouse() + " got Killed \n" + Colours.ANSI_RESET);
 				player2.updateCharacter(null, defencer_pos, true);
 			}
 		} else {
@@ -107,28 +111,44 @@ public class Score {
 
 	public void printScores() {
 		System.out.println("");
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format("-------------------------------------------------------")+Colours.ANSI_RESET);
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format("|                      %-31s|", player1.getName())+Colours.ANSI_RESET);
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format("-------------------------------------------------------")+Colours.ANSI_RESET);
-		System.out.println(String.format(Colours.BLACK_BG+Colours.WHITE_TXT+"|  CHARACTER  |  HEALTH | ATTACK  | DEFENCE  |  MOVES |"+Colours.ANSI_RESET));
-		for (GameCharacter val1 : player1.getCharacters() ) {
-			if(val1!=null) {
-				System.out.println(String.format(Colours.CYAN_BG+Colours.BLACK_TXT+"|     %3s     |   %3d   |   %3d   |    %3d   |   %3d  |"+Colours.ANSI_RESET, val1.getName(), val1.getHealth(), val1.getAttack(), val1.getDefence(), val1.getMaxMoves()));	
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT
+				+ String.format("-------------------------------------------------------") + Colours.ANSI_RESET);
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT
+				+ String.format("|                      %-31s|", player1.getName()) + Colours.ANSI_RESET);
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT
+				+ String.format("-------------------------------------------------------") + Colours.ANSI_RESET);
+		System.out.println(String.format(Colours.BLACK_BG + Colours.WHITE_TXT
+				+ "|  CHARACTER  |  HEALTH | ATTACK  | DEFENCE  |  MOVES |" + Colours.ANSI_RESET));
+		for (GameCharacter val1 : player1.getCharacters()) {
+			if (val1 != null) {
+				System.out.println(String.format(
+						Colours.CYAN_BG + Colours.BLACK_TXT + "|     %3s     |   %3d   |   %3d   |    %3d   |   %3d  |"
+								+ Colours.ANSI_RESET,
+						val1.getName(), val1.getHealth(), val1.getAttack(), val1.getDefence(), val1.getMaxMoves()));
 			}
 		}
-		System.out.println(String.format(Colours.CYAN_BG+Colours.BLACK_TXT+"-------------------------------------------------------"+Colours.ANSI_RESET));
-		
+		System.out.println(String.format(Colours.CYAN_BG + Colours.BLACK_TXT
+				+ "-------------------------------------------------------" + Colours.ANSI_RESET));
+
 		System.out.println("");
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format("-------------------------------------------------------")+Colours.ANSI_RESET);
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format("|                      %-31s|", player2.getName())+Colours.ANSI_RESET);
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format("-------------------------------------------------------")+Colours.ANSI_RESET);
-		System.out.println(Colours.BLUE_BG+Colours.WHITE_TXT+String.format(Colours.BLACK_BG+Colours.WHITE_TXT+"|  CHARACTER  |  HEALTH | ATTACK  | DEFENCE  |  MOVES |"+Colours.ANSI_RESET));
-		for (GameCharacter val1 : player2.getCharacters() ) {
-			if(val1!=null) {
-				System.out.println(String.format(Colours.CYAN_BG+Colours.BLACK_TXT+"|     %3s     |   %3d   |   %3d   |    %3d   |   %3d  |"+Colours.ANSI_RESET, val1.getName(), val1.getHealth(), val1.getAttack(), val1.getDefence(), val1.getMaxMoves()));	
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT
+				+ String.format("-------------------------------------------------------") + Colours.ANSI_RESET);
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT
+				+ String.format("|                      %-31s|", player2.getName()) + Colours.ANSI_RESET);
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT
+				+ String.format("-------------------------------------------------------") + Colours.ANSI_RESET);
+		System.out.println(Colours.BLUE_BG + Colours.WHITE_TXT + String.format(Colours.BLACK_BG + Colours.WHITE_TXT
+				+ "|  CHARACTER  |  HEALTH | ATTACK  | DEFENCE  |  MOVES |" + Colours.ANSI_RESET));
+		for (GameCharacter val1 : player2.getCharacters()) {
+			if (val1 != null) {
+				System.out.println(String.format(
+						Colours.CYAN_BG + Colours.BLACK_TXT + "|     %3s     |   %3d   |   %3d   |    %3d   |   %3d  |"
+								+ Colours.ANSI_RESET,
+						val1.getName(), val1.getHealth(), val1.getAttack(), val1.getDefence(), val1.getMaxMoves()));
 			}
 		}
-		System.out.println(String.format(Colours.CYAN_BG+Colours.BLACK_TXT+"-------------------------------------------------------"+Colours.ANSI_RESET));
+		System.out.println(String.format(Colours.CYAN_BG + Colours.BLACK_TXT
+				+ "-------------------------------------------------------" + Colours.ANSI_RESET));
 	}
 
 }
